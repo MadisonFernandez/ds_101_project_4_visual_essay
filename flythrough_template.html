@@ -320,8 +320,8 @@
             if (config.chapters.length > 0) {
                 const firstChapter = config.chapters[0];
                 map.setView(
-                    [firstChapter.location.latitude, firstChapter.location.longitude],
-                    firstChapter.location.zoom
+                    [firstChapter.camera.latitude, firstChapter.camera.longitude],
+                    firstChapter.camera.zoom
                 );
             }
 
@@ -354,8 +354,22 @@
 
         function loadSentimentData() {
             try {
-                if (!config.allLocations || config.allLocations.length === 0) {
-                    console.warn('No location data found in config.allLocations');
+                // Auto-collect all locations from chapters
+                const allLocations = [];
+                const locationNames = new Set();
+                
+                config.chapters.forEach(chapter => {
+                    if (chapter.location && chapter.location.name) {
+                        // Only add if we haven't seen this location yet
+                        if (!locationNames.has(chapter.location.name)) {
+                            locationNames.add(chapter.location.name);
+                            allLocations.push(chapter.location);
+                        }
+                    }
+                });
+                
+                if (allLocations.length === 0) {
+                    console.warn('No location data found in chapters');
                     return;
                 }
 
@@ -381,7 +395,12 @@
                 }
 
                 // Create markers for all locations
-                config.allLocations.forEach(location => {
+                allLocations.forEach(location => {
+                    // Skip locations with no post count (overview/navigation points only)
+                    if (location.postCount === null || location.postCount === undefined) {
+                        return;
+                    }
+                    
                     const color = getColorForScore(location.robertaScore, config.colorScale);
                     const radius = location.postCount ? Math.min(5 + (location.postCount / 20), 15) : 6;
                     
@@ -439,7 +458,7 @@
                     }
                 });
 
-                console.log(`Loaded ${config.allLocations.length} locations successfully`);
+                console.log(`Loaded ${allLocations.length} locations successfully`);
             } catch (error) {
                 console.error('Error loading sentiment data:', error);
             }
@@ -457,7 +476,7 @@
                 if (chapter.title) {
                     const title = document.createElement('h3');
                     title.className = 'step-title';
-                    title.textContent = chapter.title;
+                    title.innerHTML = chapter.title;
                     container.appendChild(title);
                 }
 
@@ -520,14 +539,14 @@
             activeChapter = chapter.id;
 
             // Animate map to new location
-            if (chapter.location) {
-                const center = [chapter.location.latitude, chapter.location.longitude];
+            if (chapter.camera) {
+                const center = [chapter.camera.latitude, chapter.camera.longitude];
                 const duration = chapter.duration || 2000;
                 
                 // Smooth transition
                 map.flyTo(
                     center,
-                    chapter.location.zoom,
+                    chapter.camera.zoom,
                     {
                         duration: duration / 1000,
                         easeLinearity: 0.25
@@ -558,18 +577,14 @@
                     // Show only the specific location for this chapter
                     if (chapter.location && chapter.location.name) {
                         const individualLayer = L.layerGroup();
-                        config.allLocations.forEach(loc => {
-                            if (loc.name === chapter.location.name) {
-                                // Find the marker in the all_locations layer
-                                if (layerTypes['all_locations']) {
-                                    layerTypes['all_locations'].eachLayer(marker => {
-                                        if (marker.locationData && marker.locationData.name === loc.name) {
-                                            individualLayer.addLayer(marker);
-                                        }
-                                    });
+                        // Find the marker in the all_locations layer
+                        if (layerTypes['all_locations']) {
+                            layerTypes['all_locations'].eachLayer(marker => {
+                                if (marker.locationData && marker.locationData.name === chapter.location.name) {
+                                    individualLayer.addLayer(marker);
                                 }
-                            }
-                        });
+                            });
+                        }
                         map.addLayer(individualLayer);
                     }
                 } else if (layerTypes[chapter.showData]) {
@@ -627,10 +642,14 @@
             setTimeout(initializeApp, 100);
         });
 
-        // Handle errors
+        // Handle errors (ignore benign ResizeObserver warnings)
         window.addEventListener('error', function(e) {
+            // Ignore ResizeObserver loop warnings - they're harmless
+            if (e.message && e.message.includes('ResizeObserver')) {
+                return;
+            }
             console.error('Application error:', e);
-            showError('An unexpected error occurred. Please refresh the page and try again.');
+            // Don't show error UI - just log to console
         });
     </script>
 </body>

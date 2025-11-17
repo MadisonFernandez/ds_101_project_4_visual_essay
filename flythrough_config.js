@@ -4,16 +4,22 @@
 var config = {
     // =============================================================================
     // MAP STYLE SETTINGS
+    // To change style: comment out current tileLayer and uncomment your choice
     // =============================================================================
     
-    // CURRENT STYLE: Positron Light (clean minimal style, perfect for data visualization)
+    // Positron Light (clean minimal style, perfect for data visualization)
     tileLayer: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     
-    // OTHER OPTIONS (uncomment to use):
-    // Standard OpenStreetMap: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    // Dark Positron: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-    // Terrain: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'
+    // Dark Positron (dark theme)
+    // tileLayer: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    
+    // Standard OpenStreetMap (classic map style)
+    // tileLayer: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    
+    // Terrain (topographic map)
+    // tileLayer: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     
     // =============================================================================
     // COLOR SCALE SETTINGS (Choose one - Plotly inspired)
@@ -22,172 +28,238 @@ var config = {
     colorScale: 'RdYlGn',  // Options: 'RdYlGn' (Red-Yellow-Green) or 'Portland' (Blue-White-Red)
     
     // =============================================================================
-    // PROJECT INFORMATION
-    // =============================================================================
-    
-    title: 'JMU Campus Sentiment Journey',
-    subtitle: 'A flythrough exploration of place-based emotions',
-    byline: 'By [Student Names]',
-    footer: 'Created for DS 101 Project 4',
-    
-    // =============================================================================
     // STORY CHAPTERS
-    // Students: Add one object per view/chapter in your story
+    // Students: Fill in with your data
+    // - Coordinates: Get from your CSV file (latitude, longitude columns)
+    // - Post counts & sentiment scores: Look up in your whitepaper visualizations
     // =============================================================================
     
     chapters: [
         {
-            // CHAPTER SETTINGS
-            id: 'intro',                    // Unique identifier (no spaces)
-            title: 'Welcome to JMU\'s Emotional Geography',
-            description: 'This flythrough explores how JMU students perceive and feel about different locations mentioned in Reddit posts.',
-            image: './images/quad.jpg',     // Path to image (optional, leave empty if none)
-            alignment: 'left',              // Options: 'left', 'right', 'center'
-            duration: 2500,                 // How long to fly to this view (milliseconds)
+            // CHAPTER 1: Overview of both locations
+            id: 'intro',
+            title: 'Reddit Sentiment Analysis: Two College Towns',
+            description: 'Exploring how students discuss their campuses on Reddit - comparing JMU in Harrisonburg, VA and UNC in Chapel Hill, NC.',
+            image: './images/quad.jpg',
+            duration: 3000,
             
-            // LOCATION SETTINGS (Copy from your CSV)
-            location: {
-                name: 'JMU Campus Overview',
-                latitude: 38.4347,          // Copy from CSV
-                longitude: -78.8690,        // Copy from CSV
-                zoom: 13,                   // How close: 10=far, 13=medium, 16=close, 18=very close
-                postCount: null,            // Copy from CSV (or null for overview)
-                robertaScore: null,         // Copy from CSV (or null for overview)
-                isJMU: true                 // true for JMU locations, false for non-JMU
+            // Camera position (where to fly)
+            camera: {
+                latitude: 37.2,             // Midpoint between JMU and UNC
+                longitude: -78.0,
+                zoom: 8                     // Wide view showing both locations
             },
             
-            // DATA DISPLAY (What to show on map)
-            showData: 'all_locations'       // Options: 'all_locations', 'jmu_locations', 'non_jmu_locations', 'individual', 'none'
+            showData: 'all_locations'       // Show all locations from both schools
         },
         
         {
-            // Example: Individual location with data
-            id: 'dhall',
-            title: 'D-Hall: The Social Hub',
-            description: 'D-Hall generates mixed emotions in student discussions. Our analysis shows both social connection (positive) and dining frustrations (negative).',
+            // CHAPTER 2: JMU Campus Overview
+            id: 'jmu-campus',
+            title: 'JMU Campus Overview',
+            description: 'James Madison University in Harrisonburg, Virginia. Three key locations emerge from student discussions.',
             image: './images/d_hall.jpg',
-            alignment: 'right',
-            duration: 2000,
-            
-            location: {
-                name: 'D-Hall',
-                latitude: 38.4335,          // Copy from CSV
-                longitude: -78.8715,        // Copy from CSV  
-                zoom: 17,
-                postCount: 156,             // Copy from CSV
-                robertaScore: -0.12,        // Copy from CSV (negative to positive scale)
-                isJMU: true
-            },
-            
-            showData: 'individual'          // Show only this location highlighted
-        },
-        
-        {
-            // Example: JMU locations overview
-            id: 'campus-locations',
-            title: 'JMU Campus Locations',
-            description: 'A view of all locations on campus that students discussed in Reddit posts.',
-            image: './images/arboretum.jpg',
-            alignment: 'center',
-            duration: 2000,
-            
-            location: {
-                name: 'JMU Campus',
-                latitude: 38.4365,
-                longitude: -78.8705,
-                zoom: 14,
-                postCount: null,
-                robertaScore: null,
-                isJMU: true
-            },
-            
-            showData: 'jmu_locations'       // Show all JMU locations
-        },
-        
-        {
-            // Example: Non-JMU locations (Harrisonburg area)
-            id: 'harrisonburg',
-            title: 'Beyond Campus: Harrisonburg',
-            description: 'The broader Harrisonburg community shows how JMU students engage with their college town.',
-            image: './images/art_gallery.jpg',
-            alignment: 'left',
             duration: 2500,
             
+            // Camera position
+            camera: {
+                latitude: 38.4365,
+                longitude: -78.8705,
+                zoom: 14
+            },
+            
+            showData: 'jmu_locations'       // Show only JMU locations
+        },
+        
+        {
+            // CHAPTER 3: JMU Location 1
+            id: 'jmu-location-1',
+            title: 'JMU Location 1: [Name Here]',
+            description: 'Add your description here. Include sentiment analysis findings, post count, and key themes.',
+            image: './images/quad.jpg',
+            duration: 2000,
+            
+            // Camera position
+            camera: {
+                latitude: 38.4347,           // Replace with coordinates from CSV
+                longitude: -78.8690,
+                zoom: 17
+            },
+            
+            // Location data (creates the marker on map)
             location: {
-                name: 'Downtown Harrisonburg',
-                latitude: 38.4496,
-                longitude: -78.8689,
-                zoom: 13,
-                postCount: null,
-                robertaScore: null,
+                name: 'JMU Location 1',      // Replace with location name from CSV
+                latitude: 38.4347,           // Must match camera coordinates
+                longitude: -78.8690,
+                postCount: 50,               // Look up in your whitepaper visualizations
+                robertaScore: 0.25,          // Look up in your whitepaper visualizations
+                isJMU: true
+            },
+            
+            showData: 'individual'           // Highlight only this location
+        },
+        
+        {
+            // CHAPTER 4: JMU Location 2
+            id: 'jmu-location-2',
+            title: 'JMU Location 2: [Name Here]',
+            description: 'Add your description here.',
+            image: './images/arboretum.jpg',
+            duration: 2000,
+            
+            camera: {
+                latitude: 38.4335,
+                longitude: -78.8715,
+                zoom: 17
+            },
+            
+            location: {
+                name: 'JMU Location 2',
+                latitude: 38.4335,
+                longitude: -78.8715,
+                postCount: 75,
+                robertaScore: -0.15,
+                isJMU: true
+            },
+            
+            showData: 'individual'
+        },
+        
+        {
+            // CHAPTER 5: JMU Location 3
+            id: 'jmu-location-3',
+            title: 'JMU Location 3: [Name Here]',
+            description: 'Add your description here.',
+            image: './images/art_gallery.jpg',
+            duration: 2000,
+            
+            camera: {
+                latitude: 38.4390,
+                longitude: -78.8620,
+                zoom: 17
+            },
+            
+            location: {
+                name: 'JMU Location 3',
+                latitude: 38.4390,
+                longitude: -78.8620,
+                postCount: 100,
+                robertaScore: 0.55,
+                isJMU: true
+            },
+            
+            showData: 'individual'
+        },
+        
+        {
+            // CHAPTER 6: UNC Campus Overview
+            id: 'unc-campus',
+            title: 'UNC Campus Overview',
+            description: 'University of North Carolina at Chapel Hill. Three key locations emerge from student discussions.',
+            image: './images/quad.jpg',
+            duration: 2500,
+            
+            camera: {
+                latitude: 35.9049,
+                longitude: -79.0469,
+                zoom: 14
+            },
+            
+            showData: 'non_jmu_locations'    // Show only UNC locations
+        },
+        
+        {
+            // CHAPTER 7: UNC Location 1
+            id: 'unc-location-1',
+            title: 'UNC Location 1: [Name Here]',
+            description: 'Add your description here.',
+            image: './images/d_hall.jpg',
+            duration: 2000,
+            
+            camera: {
+                latitude: 35.9050,
+                longitude: -79.0470,
+                zoom: 17
+            },
+            
+            location: {
+                name: 'UNC Location 1',
+                latitude: 35.9050,
+                longitude: -79.0470,
+                postCount: 60,
+                robertaScore: 0.30,
+                isJMU: false                 // UNC location
+            },
+            
+            showData: 'individual'
+        },
+        
+        {
+            // CHAPTER 8: UNC Location 2
+            id: 'unc-location-2',
+            title: 'UNC Location 2: [Name Here]',
+            description: 'Add your description here.',
+            image: './images/arboretum.jpg',
+            duration: 2000,
+            
+            camera: {
+                latitude: 35.9060,
+                longitude: -79.0480,
+                zoom: 17
+            },
+            
+            location: {
+                name: 'UNC Location 2',
+                latitude: 35.9060,
+                longitude: -79.0480,
+                postCount: 85,
+                robertaScore: -0.10,
                 isJMU: false
             },
             
-            showData: 'non_jmu_locations'   // Show all non-JMU locations
+            showData: 'individual'
+        },
+        
+        {
+            // CHAPTER 9: UNC Location 3
+            id: 'unc-location-3',
+            title: 'UNC Location 3: [Name Here]',
+            description: 'Add your description here.',
+            image: './images/art_gallery.jpg',
+            duration: 2000,
+            
+            camera: {
+                latitude: 35.9070,
+                longitude: -79.0490,
+                zoom: 17
+            },
+            
+            location: {
+                name: 'UNC Location 3',
+                latitude: 35.9070,
+                longitude: -79.0490,
+                postCount: 95,
+                robertaScore: 0.40,
+                isJMU: false
+            },
+            
+            showData: 'individual'
+        },
+        {
+            // CHAPTER 10: Final zoom out
+            id: 'conclusion',
+            title: 'Conclusion: Comparing Campus Sentiment',
+            description: 'Our analysis reveals both similarities and differences in how students experience and discuss these two universities.',
+            image: './images/quad.jpg',
+            duration: 3000,
+            
+            camera: {
+                latitude: 37.2,
+                longitude: -78.0,
+                zoom: 8
+            },
+            
+            showData: 'all_locations'
         }
-        
-        // ADD MORE CHAPTERS HERE - Copy the structure above
-        
-    ],
-    
-    // =============================================================================
-    // ALL LOCATION DATA
-    // Students: Add ALL locations from your CSV here (used for map visualization)
-    // Copy entire rows from your CSV - this creates the data points shown on map
-    // =============================================================================
-    
-    allLocations: [
-        {
-            name: 'JMU Quad',
-            latitude: 38.4347,
-            longitude: -78.8695,
-            postCount: 42,
-            robertaScore: 0.65,
-            isJMU: true
-        },
-        {
-            name: 'D-Hall',
-            latitude: 38.4335,
-            longitude: -78.8715,
-            postCount: 156,
-            robertaScore: -0.12,
-            isJMU: true
-        },
-        {
-            name: 'Carrier Library',
-            latitude: 38.4365,
-            longitude: -78.8705,
-            postCount: 89,
-            robertaScore: -0.25,
-            isJMU: true
-        },
-        {
-            name: 'Bridgeforth Stadium',
-            latitude: 38.4390,
-            longitude: -78.8620,
-            postCount: 73,
-            robertaScore: 0.78,
-            isJMU: true
-        },
-        {
-            name: 'Downtown Harrisonburg',
-            latitude: 38.4496,
-            longitude: -78.8689,
-            postCount: 89,
-            robertaScore: 0.42,
-            isJMU: false
-        },
-        {
-            name: 'Sheetz (Port Republic)',
-            latitude: 38.4280,
-            longitude: -78.8510,
-            postCount: 34,
-            robertaScore: 0.55,
-            isJMU: false
-        }
-        
-        // ADD ALL YOUR CSV LOCATIONS HERE
-        // Copy the format above for each location in your dataset
-        
     ]
 };

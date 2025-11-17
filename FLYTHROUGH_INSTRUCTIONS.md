@@ -1,4 +1,4 @@
-# Free Flythrough Instructions (No API Tokens Required!)
+# Flythrough Instructions (No API Tokens Required!)
 
 ## Overview
 This version uses **OpenStreetMap** and **Leaflet** instead of Mapbox, so you don't need any API tokens or accounts. Everything is completely free!
@@ -6,222 +6,183 @@ This version uses **OpenStreetMap** and **Leaflet** instead of Mapbox, so you do
 ## Quick Start
 
 ### Files You Need:
-1. `flythrough_config_free.js` - Your story configuration 
-2. `flythrough_template_free.html` - The interactive map template
-3. Your processed sentiment data (as GeoJSON)
-4. Images for your story (optional)
+1. `flythrough_config.js` - Your story configuration 
+2. `flythrough_template.html` - The interactive map template
+3. Your processed sentiment data (from CSV)
+4. Images for your story (in `./images/` folder)
 
 ### Immediate Setup:
-1. **Open** `flythrough_template_free.html` in any web browser
+1. **Open** `flythrough_template.html` in any web browser
 2. **It works instantly** - no API keys needed!
-3. **Customize** the `flythrough_config_free.js` file for your data
+3. **Customize** the `flythrough_config.js` file with your data
 
-## Key Differences from Mapbox Version
+## Understanding the Structure
 
-### ✅ Advantages:
-- **No API tokens required**
-- **No usage limits** 
-- **No credit card needed**
-- **Works offline** (once loaded)
-- **Multiple free map styles** available
+The flythrough is built around **chapters** - each chapter represents one view/stop in your story. There are two types of chapters:
 
-### ⚠️ Limitations:
-- No 3D terrain (flat maps only)
-- Fewer satellite imagery options
-- No custom vector styling
-- Slightly less smooth animations
+### Overview Chapters (Camera Only)
+These show a view without placing a marker on the map. Use for introductions, transitions, and conclusions.
+
+```javascript
+{
+    id: 'intro',
+    title: 'Campus Sentiment Overview',
+    description: 'Exploring student feelings about campus locations...',
+    image: './images/quad.jpg',
+    duration: 3000,
+    
+    camera: {                    // Where the map flies to
+        latitude: 38.4365,
+        longitude: -78.8705,
+        zoom: 14                 // Lower = zoomed out, higher = zoomed in
+    },
+    
+    showData: 'all_locations'    // Show all location markers
+}
+```
+
+### Location Chapters (Camera + Data)
+These fly to a specific location AND display its data marker.
+
+```javascript
+{
+    id: 'dhall',
+    title: 'D-Hall: The Social Hub',
+    description: 'Students have mixed feelings about D-Hall...',
+    image: './images/dhall.jpg',
+    duration: 2000,
+    
+    camera: {                    // Where the map flies to
+        latitude: 38.4335,
+        longitude: -78.8715,
+        zoom: 17
+    },
+    
+    location: {                  // Data point to display (from CSV)
+        name: 'D-Hall',
+        latitude: 38.4335,       // Must match camera coordinates
+        longitude: -78.8715,
+        postCount: 156,          // From your CSV
+        robertaScore: -0.12,     // From your CSV
+        isJMU: true              // true = JMU, false = UNC (or other school)
+    },
+    
+    showData: 'individual'       // Highlight only this location
+}
+```
 
 ## Customizing Your Flythrough
 
-### 1. Edit Basic Information
-In `flythrough_config_free.js`, update these sections:
+### 1. Change Map Style
+In `flythrough_config.js`, uncomment your preferred map style:
 
 ```javascript
-// Change the title and description
-title: 'Your University Sentiment Journey',
-subtitle: 'Exploring emotional geography of your campus',
-byline: 'By [Your Names Here]',
-
-// Update the chapters array with your locations
-chapters: [
-    {
-        id: 'your-first-location',
-        title: 'Your Location Title',
-        description: 'Your description here...',
-        location: {
-            center: [latitude, longitude], // Your coordinates
-            zoom: 15,
-            duration: 2000
-        }
-        // ... more settings
-    }
-    // Add more chapters...
-]
-```
-
-### 2. Find Your Coordinates
-**Easy Method - Google Maps:**
-1. Go to [maps.google.com](https://maps.google.com)
-2. Right-click on any location
-3. Click the coordinates that appear
-4. Copy the numbers (first is latitude, second is longitude)
-5. Use as `[latitude, longitude]` in your config
-
-**Alternative - OpenStreetMap:**
-1. Go to [openstreetmap.org](https://openstreetmap.org)
-2. Navigate to your location
-3. Right-click and choose "Show address"
-4. Use the coordinates shown
-
-### 3. Change Map Style
-In `flythrough_config_free.js`, you can change the `tileLayer` to different free options:
-
-```javascript
-// Standard OpenStreetMap (default)
-tileLayer: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-
-// Satellite imagery (free!)
-tileLayer: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-
-// Terrain map
-tileLayer: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-
-// Light/minimal style
+// Positron Light (default - clean minimal style)
 tileLayer: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
 
-// Dark style
-tileLayer: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+// Dark Positron (dark theme)
+// tileLayer: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+
+// Standard OpenStreetMap (classic map style)
+// tileLayer: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+
+// Terrain (topographic map)
+// tileLayer: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
 ```
 
-### 4. Add Your Sentiment Data
-
-Replace the `sampleSentimentData` in the config file with your processed data:
+### 2. Choose Color Scale
+Pick how sentiment is colored on the map:
 
 ```javascript
-var sampleSentimentData = {
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "properties": {
-                "place_name": "Your Location Name",
-                "sentiment": 0.65, // -1 to 1 scale
-                "post_count": 42,
-                "place_type": "campus", // or "dining", "residential", etc.
-                "avg_sentiment": "positive",
-                "description": "Brief description"
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [longitude, latitude] // NOTE: Longitude first for GeoJSON!
-            }
-        }
-        // Add more locations...
-    ]
-}
+colorScale: 'RdYlGn',  // Red (negative) → Yellow → Green (positive)
+// OR
+colorScale: 'Portland',  // Blue (negative) → White → Red (positive)
 ```
 
-**⚠️ Important:** GeoJSON uses `[longitude, latitude]` order, while Leaflet map centers use `[latitude, longitude]`!
+### 3. Fill In Your Chapters
 
-### 5. Customize Data Visualization
+The template includes 10 pre-structured chapters:
+1. **Intro** - Wide view of both campuses
+2. **JMU Campus** - Overview of JMU locations
+3. **JMU Location 1** - Individual JMU location
+4. **JMU Location 2** - Individual JMU location
+5. **JMU Location 3** - Individual JMU location
+6. **UNC Campus** - Overview of UNC locations
+7. **UNC Location 1** - Individual UNC location
+8. **UNC Location 2** - Individual UNC location
+9. **UNC Location 3** - Individual UNC location
+10. **Conclusion** - Wide view wrapping up
 
-Edit the `dataLayers` section to match your data categories:
+**For each location chapter:**
+1. Copy latitude/longitude from your CSV
+2. Use the same coordinates for both `camera` and `location`
+3. Look at your whitepaper map/visualizations to find `postCount` and `robertaScore` for each location
+4. Replace placeholder titles and descriptions
+5. Add appropriate images to `./images/` folder
+
+### 4. Understanding showData Options
+
+- `'all_locations'` - Shows all markers from all chapters
+- `'jmu_locations'` - Shows only markers where `isJMU: true`
+- `'non_jmu_locations'` - Shows only markers where `isJMU: false`
+- `'individual'` - Highlights only the current chapter's location marker
+
+### 5. HTML Support in Text
+
+Both `title` and `description` support HTML formatting:
 
 ```javascript
-dataLayers: {
-    'your-category-name': {
-        color: '#10b981',        // Hex color code
-        radius: 8,               // Circle size
-        opacity: 0.8,            // Transparency
-        filter: (feature) => feature.properties.your_field === 'your_value'
-    }
-}
-```
-
-## Converting Your CSV Data to GeoJSON
-
-If you have CSV data with coordinates, here's a simple Python script:
-
-```python
-import pandas as pd
-import json
-
-# Read your CSV
-df = pd.read_csv('your_sentiment_data.csv')
-
-# Create GeoJSON structure
-geojson = {
-    "type": "FeatureCollection",
-    "features": []
-}
-
-# Convert each row
-for _, row in df.iterrows():
-    feature = {
-        "type": "Feature",
-        "properties": {
-            "place_name": row['place_name'],
-            "sentiment": row['sentiment_score'],
-            "post_count": row['post_count'],
-            "place_type": row['category'],
-            # Add other fields as needed
-        },
-        "geometry": {
-            "type": "Point",
-            "coordinates": [row['longitude'], row['latitude']]  # lng, lat order!
-        }
-    }
-    geojson["features"].append(feature)
-
-# Save as JavaScript file
-with open('your_data.js', 'w') as f:
-    f.write(f'var sampleSentimentData = {json.dumps(geojson, indent=2)};')
+title: 'D-Hall: The <em>Social</em> Hub',
+description: 'Students report <strong>mixed emotions</strong>.<br><br>Positive: social connections<br>Negative: food quality'
 ```
 
 ## Adding Images
 
-1. **Create an `images` folder** in the same directory as your HTML file
-2. **Add your photos** (JPG, PNG, GIF supported)
-3. **Reference them** in your config:
+1. **Add your photos** to the `./images/` folder (JPG, PNG, GIF supported)
+2. **Reference them** in your config:
 
 ```javascript
-chapters: [
-    {
-        id: 'chapter-1',
-        title: 'Your Location',
-        image: './images/your-photo.jpg',  // Relative path
-        description: '...',
-        // ... rest of chapter config
-    }
-]
+{
+    id: 'chapter-1',
+    title: 'Your Location',
+    image: './images/your-photo.jpg',  // Relative path
+    description: '...',
+    camera: { /* ... */ }
+}
 ```
 
 ## Testing Your Flythrough
 
 ### Local Testing:
-1. **Open** `flythrough_template_free.html` in your web browser
-2. **Check the browser console** (F12) for any errors
-3. **Scroll down** to navigate through your story
+1. **Open** `flythrough_template.html` in your web browser
+2. **Scroll down** to navigate through your story
+3. **Check the browser console** (F12) for any errors
 
 ### Common Issues:
 
 **Map doesn't load:**
 - Check browser console for errors
-- Ensure internet connection (tiles load from web)
+- Ensure internet connection (map tiles load from web)
 
-**Data points don't appear:**
-- Verify your GeoJSON format
-- Check coordinate order (longitude, latitude for GeoJSON)
-- Look for JavaScript errors in console
+**Markers don't appear:**
+- Verify you have `location` objects in chapters where you want markers
+- Check that coordinates are correct numbers (not strings)
+- Ensure `postCount` is not null for data chapters
+- Look for JavaScript syntax errors in console
+
+**Camera doesn't fly:**
+- Ensure each chapter has a `camera` object
+- Check `duration` values are numbers in milliseconds
+- Verify coordinates are valid numbers
 
 **Images don't show:**
-- Check file paths are correct
-- Ensure images exist in specified location
-- Verify image file extensions match
+- Check file paths are correct (`./images/filename.jpg`)
+- Ensure images exist in the `images` folder
+- Verify file extensions match exactly
 
 ## Deployment Options
 
-### GitHub Pages (Free!):
+### GitHub Pages (Recommended):
 1. Create a GitHub repository
 2. Upload all your files
 3. Go to Settings → Pages
@@ -231,71 +192,32 @@ chapters: [
 ### Alternative Free Hosting:
 - **Netlify:** Drag and drop your folder
 - **Vercel:** Connect your GitHub repo
-- **Surge.sh:** Command line deployment
 
-## Educational Integration
+## Quick Reference
 
-### For Different Universities:
-Simply change the coordinates and location names:
+### Zoom Levels:
+- `6-8`: Regional view (multiple cities)
+- `12-14`: City/campus overview
+- `16-18`: Individual building close-up
 
-```javascript
-// For ODU
-center: [36.8815, -76.3034],
+### Duration (milliseconds):
+- `2000`: Fast transition (2 seconds)
+- `2500`: Medium transition
+- `3000`: Slow transition (3 seconds)
 
-// For UVA  
-center: [38.0336, -78.5080],
+### Data Collection:
+All location data automatically collected from chapters with `location` objects. No need to duplicate data!
 
-// For VCU
-center: [37.5407, -77.4360],
-
-// For Virginia Tech
-center: [37.2284, -80.4234],
-```
-
-### Multi-Institution Comparison:
-Create chapters that fly between different campuses to compare sentiment patterns across universities.
-
-### Data Integration:
-Use the same processed sentiment data from your Python notebooks - just convert to GeoJSON format.
-
-## Troubleshooting
-
-### JavaScript Errors:
-1. Open browser console (F12)
-2. Look for red error messages
-3. Most common issues:
-   - Missing comma in config file
-   - Incorrect coordinate format
-   - Missing image files
-
-### Map Display Issues:
-- Clear browser cache
-- Check internet connection
-- Try different tile layer URLs
-
-### Performance Tips:
-- Limit data points to <1000 for smooth performance
-- Optimize images (compress to <500KB each)
-- Test on different devices/browsers
-
-## Advanced Customization
-
-### Custom Styling:
-Edit the CSS in the HTML template to change colors, fonts, and layout.
-
-### Animation Speed:
-Adjust `animationDuration` in config for faster/slower transitions.
-
-### Mobile Optimization:
-The template includes responsive design, but you can adjust breakpoints in the CSS.
+### isJMU Property:
+- `true`: Location belongs to JMU (or your primary school)
+- `false`: Location belongs to comparison school (UNC, etc.)
 
 ## Support Resources
 
 - **Leaflet Documentation:** [leafletjs.com](https://leafletjs.com)
 - **OpenStreetMap:** [openstreetmap.org](https://openstreetmap.org)
-- **GeoJSON Format:** [geojson.org](https://geojson.org)
-- **Free Tile Providers:** [leaflet-extras.github.io/leaflet-providers/](https://leaflet-extras.github.io/leaflet-providers/)
+- **Free Map Styles:** [leaflet-extras.github.io/leaflet-providers/](https://leaflet-extras.github.io/leaflet-providers/)
 
 ---
 
-**🎉 Congratulations!** You now have a completely free, token-less flythrough system that showcases your sentiment analysis data with beautiful interactive maps!
+**🎉 You're all set!** Your flythrough will automatically display all location markers and fly between chapters as users scroll.
