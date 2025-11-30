@@ -152,16 +152,16 @@ var config = {
         },
         
         {
-            // CHAPTER 6: UNC Campus Overview
-            id: 'unc-campus',
-            title: 'UNC Campus Overview',
-            description: 'University of North Carolina at Chapel Hill. Three key locations emerge from student discussions.',
-            image: './images/quad.jpg',
+            // CHAPTER 6: UVA Campus Overview
+            id: 'uva-campus',
+            title: 'UVA Campus Overview',
+            description: 'University of Virginia at Charlottesville, VA. Three key locations emerge from student discussions.',
+            image: './images/uva_overview.jpg',
             duration: 2500,
             
             camera: {
-                latitude: 35.9049,
-                longitude: -79.0469,
+                latitude: 38.0339,
+                longitude: -78.5080,
                 zoom: 14
             },
             
@@ -171,21 +171,21 @@ var config = {
         {
             // CHAPTER 7: UNC Location 1
             id: 'unc-location-1',
-            title: 'UNC Location 1: [Name Here]',
+            title: 'UNC Location 1: Gaza',
             description: 'Add your description here.',
-            image: './images/d_hall.jpg',
-            duration: 2000,
+            image: './images/uva_gazajpg',
+            duration: 5000,
             
             camera: {
-                latitude: 35.9050,
-                longitude: -79.0470,
-                zoom: 17
+                latitude: 31.5016,
+                longitude: 34.4667,
+                zoom: 12
             },
             
             location: {
                 name: 'UNC Location 1',
-                latitude: 35.9050,
-                longitude: -79.0470,
+                latitude: 31.5106,
+                longitude: 34.4667,
                 postCount: 60,
                 robertaScore: 0.30,
                 isJMU: false                 // UNC location
@@ -197,21 +197,21 @@ var config = {
         {
             // CHAPTER 8: UNC Location 2
             id: 'unc-location-2',
-            title: 'UNC Location 2: [Name Here]',
+            title: 'UNC Location 2: Palestine',
             description: 'Add your description here.',
-            image: './images/arboretum.jpg',
-            duration: 2000,
+            image: './images/uva_palestine.jpg',
+            duration: 5000,
             
             camera: {
-                latitude: 35.9060,
-                longitude: -79.0480,
-                zoom: 17
+                latitude: 31.9216,
+                longitude: 35.2033,
+                zoom: 12
             },
             
             location: {
                 name: 'UNC Location 2',
-                latitude: 35.9060,
-                longitude: -79.0480,
+                latitude: 31.9216,
+                longitude: 35.2033,
                 postCount: 85,
                 robertaScore: -0.10,
                 isJMU: false
@@ -223,21 +223,21 @@ var config = {
         {
             // CHAPTER 9: UNC Location 3
             id: 'unc-location-3',
-            title: 'UNC Location 3: [Name Here]',
+            title: 'UNC Location 3: Israel',
             description: 'Add your description here.',
-            image: './images/art_gallery.jpg',
-            duration: 2000,
+            image: './images/uva_israel.jpg',
+            duration: 3000,
             
             camera: {
-                latitude: 35.9070,
-                longitude: -79.0490,
-                zoom: 17
+                latitude: 30.8336,
+                longitude: 34.8572,
+                zoom: 12
             },
             
             location: {
                 name: 'UNC Location 3',
-                latitude: 35.9070,
-                longitude: -79.0490,
+                latitude: 30.8336,
+                longitude: 34.8572,
                 postCount: 95,
                 robertaScore: 0.40,
                 isJMU: false
@@ -254,8 +254,8 @@ var config = {
             duration: 3000,
             
             camera: {
-                latitude: 37.2,
-                longitude: -78.0,
+                latitude: 38.2213,
+                longitude: -78.7455,
                 zoom: 8
             },
             
