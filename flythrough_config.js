@@ -72,9 +72,9 @@ var config = {
         },
         
         {
-            // CHAPTER 3: D-Hall
+            // CHAPTER 3: JMU Location 1
             id: 'jmu-location-1',
-            title: 'JMU Location 1: [Name Here]',
+            title: 'JMU Location 1: D-Hall',
             description: 'Add your description here. Include sentiment analysis findings, post count, and key themes.',
             image: './images/jmu_dhall.jpg',
             duration: 2000,
@@ -102,21 +102,21 @@ var config = {
         {
             // CHAPTER 4: JMU Location 2
             id: 'jmu-location-2',
-            title: 'JMU Location 2: [Name Here]',
+            title: 'JMU Location 2: The Village',
             description: 'Add your description here.',
-            image: './images/arboretum.jpg',
+            image: './images/jmu_village.jpg',
             duration: 2000,
             
             camera: {
-                latitude: 38.4335,
-                longitude: -78.8715,
+                latitude: 38.4362,
+                longitude:  -78.8691,
                 zoom: 17
             },
             
             location: {
                 name: 'JMU Location 2',
-                latitude: 38.4335,
-                longitude: -78.8715,
+                latitude: 38.4362,
+                longitude:  -78.8691,
                 postCount: 75,
                 robertaScore: -0.15,
                 isJMU: true
@@ -128,21 +128,21 @@ var config = {
         {
             // CHAPTER 5: JMU Location 3
             id: 'jmu-location-3',
-            title: 'JMU Location 3: [Name Here]',
+            title: 'JMU Location 3: The Quad',
             description: 'Add your description here.',
-            image: './images/art_gallery.jpg',
+            image: './images/jmu_quad.jpg',
             duration: 2000,
             
             camera: {
-                latitude: 38.4390,
-                longitude: -78.8620,
+                latitude: 38.4385,
+                longitude: -78.8738,
                 zoom: 17
             },
             
             location: {
                 name: 'JMU Location 3',
-                latitude: 38.4390,
-                longitude: -78.8620,
+                latitude: 38.4385,
+                longitude: -78.8738,
                 postCount: 100,
                 robertaScore: 0.55,
                 isJMU: true
