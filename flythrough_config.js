@@ -38,8 +38,8 @@ var config = {
         {
             // CHAPTER 1: Overview of both locations
             id: 'intro',
-            title: 'Reddit Sentiment Analysis: Two College Towns',
-            description: 'Exploring how students discuss their campuses on Reddit - comparing JMU in Harrisonburg, VA and UNC in Chapel Hill, NC.',
+            title: 'Reddit Sentiment Analysis: JMU vs. UVA',
+            description: 'Exploring how students discuss their campuses on Reddit - comparing JMU in Harrisonburg, VA and UVA in Charlottesville, VA.',
             image: './images/quad.jpg',
             duration: 3000,
             
@@ -58,7 +58,7 @@ var config = {
             id: 'jmu-campus',
             title: 'JMU Campus Overview',
             description: 'James Madison University in Harrisonburg, Virginia. Three key locations emerge from student discussions.',
-            image: './images/d_hall.jpg',
+            image: './images/jmu_overview.jpg',
             duration: 2500,
             
             // Camera position
