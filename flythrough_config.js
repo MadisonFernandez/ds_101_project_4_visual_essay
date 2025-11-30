@@ -45,8 +45,8 @@ var config = {
             
             // Camera position (where to fly)
             camera: {
-                latitude: 37.2,             // Midpoint between JMU and UNC
-                longitude: -78.0,
+                latitude: 38.2,             // Midpoint between JMU and UNC
+                longitude: -78.7,
                 zoom: 8                     // Wide view showing both locations
             },
             
@@ -72,25 +72,25 @@ var config = {
         },
         
         {
-            // CHAPTER 3: JMU Location 1
+            // CHAPTER 3: D-Hall
             id: 'jmu-location-1',
             title: 'JMU Location 1: [Name Here]',
             description: 'Add your description here. Include sentiment analysis findings, post count, and key themes.',
-            image: './images/quad.jpg',
+            image: './images/jmu_dhall.jpg',
             duration: 2000,
             
             // Camera position
             camera: {
-                latitude: 38.4347,           // Replace with coordinates from CSV
-                longitude: -78.8690,
+                latitude: 38.4376,           // Replace with coordinates from CSV
+                longitude: -78.8772,
                 zoom: 17
             },
             
             // Location data (creates the marker on map)
             location: {
                 name: 'JMU Location 1',      // Replace with location name from CSV
-                latitude: 38.4347,           // Must match camera coordinates
-                longitude: -78.8690,
+                latitude: 38.4376,           // Must match camera coordinates
+                longitude: -78.8772,
                 postCount: 50,               // Look up in your whitepaper visualizations
                 robertaScore: 0.25,          // Look up in your whitepaper visualizations
                 isJMU: true
