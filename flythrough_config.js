@@ -155,7 +155,7 @@ var config = {
             // CHAPTER 6: UVA Campus Overview
             id: 'uva-campus',
             title: 'UVA Campus Overview',
-            description: 'University of Virginia at Charlottesville, VA. Three key locations emerge from student discussions.',
+            description: 'University of Virginia at Charlottesville, VA. Three key locations emerge from student discussions: Gaza, Palestine, and Israel.',
             image: './images/uva_overview.jpg',
             duration: 2500,
             
