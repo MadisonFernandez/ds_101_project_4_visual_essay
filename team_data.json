@@ -5,7 +5,14 @@
       "major": "Writing, Rhetoric & Technical Communication",
       "role": "Compiler & Project Lead",
       "github": "https://github.com/MadisonFernandez",
-      "headshot": "images/headshot_dukedog.jpg"
+      "headshot": "images/madison_headshot.jpg"
+    },
+     {
+      "name": "Lilia Edwards",
+      "major": "Marketing",
+      "role": "Data Visualization",
+      "github": "https://github.com/liliamedwards",
+      "headshot": ""
     },
     {
       "name": "Maggie Teweles",
@@ -15,25 +22,18 @@
       "headshot": ""
     },
     {
-      "name": "Lilia Edwards",
-      "major": "Marketing",
-      "role": "Data Visualization",
-      "github": "https://github.com/liliamedwards",
-      "headshot": ""
-    },
-    {
       "name": "Kayli Blankenship",
       "major": "Media Arts & Design",
       "role": "Georeferencing",
       "github": "https://github.com/kaylib03",
-      "headshot": ""
+      "headshot": "images/kayli_headshot.jpg"
     },
     {
       "name": "Kate Dunham",
       "major": "Media Arts & Design",
       "role": "Map Stylist",
       "github": "https://github.com/kkatedunham",
-      "headshot": ""
+      "headshot": "images/kate_headshot.jpg"
     }
   ]
 }
