@@ -224,7 +224,7 @@ var config = {
             // CHAPTER 9: UVA Location 3
             id: 'uva-location-3',
             title: 'UVA Location 3: Israel',
-            description: '',
+            description: 'With violence on the West Bank of Israel, the country is frequently discussed by UVA students in relation to the war between Israel and Palestine. With an average sentiment score of -.48, and post count of 62, the key themes discussed about Isreal include war and death.',
             image: './images/uva_israel.jpg',
             duration: 3000,
             
