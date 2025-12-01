@@ -75,7 +75,7 @@ var config = {
             // CHAPTER 3: JMU Location 1
             id: 'jmu-location-1',
             title: 'JMU Location 1: D-Hall',
-            description: 'Add your description here. Include sentiment analysis findings, post count, and key themes.',
+            description:  'A prominent and frequently visited dining hall, centrally location on Main Campus, D-Hall serves food to much of the student population. With an average sentiment score of 17.488, and total post count of 41, D-hall sparked conversations about renovations to the building and food preferences at the dining hall.',
             image: './images/jmu_dhall.jpg',
             duration: 2000,
             
