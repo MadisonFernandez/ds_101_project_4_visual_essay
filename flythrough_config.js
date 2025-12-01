@@ -25,7 +25,7 @@ var config = {
     // COLOR SCALE SETTINGS (Choose one - Plotly inspired)
     // =============================================================================
     
-    colorScale: 'RdYlGn',  // Options: 'RdYlGn' (Red-Yellow-Green) or 'Portland' (Blue-White-Red)
+    colorScale: 'Portland',  // Options: 'RdYlGn' (Red-Yellow-Green) or 'Portland' (Blue-White-Red)
     
     // =============================================================================
     // STORY CHAPTERS
