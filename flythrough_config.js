@@ -187,7 +187,7 @@ var config = {
                 latitude: 31.5106,
                 longitude: 34.4667,
                 postCount: 16,
-                robertaScore: 0.544,
+                robertaScore: -0.544,
                 isJMU: false                 // UVA location
             },
             
@@ -213,7 +213,7 @@ var config = {
                 latitude: 31.9216,
                 longitude: 35.2033,
                 postCount: 23,
-                robertaScore: 0.351,
+                robertaScore: -0.351,
                 isJMU: false
             },
             
@@ -239,7 +239,7 @@ var config = {
                 latitude: 30.8336,
                 longitude: 34.8572,
                 postCount: 62,
-                robertaScore: 0.484,
+                robertaScore: -0.484,
                 isJMU: false
             },
             
