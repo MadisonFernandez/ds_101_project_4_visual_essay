@@ -75,7 +75,7 @@ var config = {
             // CHAPTER 3: JMU Location 1
             id: 'jmu-location-1',
             title: 'JMU Location 1: D-Hall',
-            description:  'A prominent and frequently visited dining hall, centrally location on Main Campus, D-Hall serves food to much of the student population. With an average sentiment score of 17.488, and total post count of 41, D-hall sparked conversations about renovations to the building and food preferences at the dining hall.',
+            description:  'A prominent and frequently visited dining hall, centrally location on Main Campus, D-Hall serves food to much of the student population. With an average sentiment score of -0.27, and total post count of 41, D-hall sparked conversations about renovations to the building and food preferences at the dining hall.',
             image: './images/jmu_dhall.jpg',
             duration: 2000,
             
@@ -103,7 +103,7 @@ var config = {
             // CHAPTER 4: JMU Location 2
             id: 'jmu-location-2',
             title: 'JMU Location 2: The Village',
-            description: 'A popular dormitory area amongst freshmen, The Village dorms are a cluster of nine buildings on Main Campus. With an average sentiment score or 15.06 and post count of 16, conversations about The Village include renovations to the area, lack of air conditioning in the dorms, and the stereotypes of social students who live there. ',
+            description: 'A popular dormitory area amongst freshmen, The Village dorms are a cluster of nine buildings on Main Campus. With an average sentiment score or -0.47 and post count of 16, conversations about The Village include renovations to the area, lack of air conditioning in the dorms, and the stereotypes of social students who live there. ',
             image: './images/jmu_village.jpg',
             duration: 2000,
             
@@ -129,7 +129,7 @@ var config = {
             // CHAPTER 5: JMU Location 3
             id: 'jmu-location-3',
             title: 'JMU Location 3: The Quad',
-            description: 'The rectangular lawn with academic buildings and dorms on its perimeter, serves as the central hub for students in the heart of Main Campus. With an average sentiment score of 27.26, and post count of 15, conversations about The Quad revolve around the scenery of the space and on-campus housing in the area.',
+            description: 'The rectangular lawn with academic buildings and dorms on its perimeter, serves as the central hub for students in the heart of Main Campus. With an average sentiment score of 0.27, and post count of 15, conversations about The Quad revolve around the scenery of the space and on-campus housing in the area.',
             image: './images/jmu_quad.jpg',
             duration: 2000,
             
