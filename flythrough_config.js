@@ -173,7 +173,7 @@ var config = {
             id: 'unc-location-1',
             title: 'UNC Location 1: Gaza',
             description: 'Add your description here.',
-            image: './images/uva_gazajpg',
+            image: './images/uva_gaza.jpg',
             duration: 5000,
             
             camera: {
