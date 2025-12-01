@@ -165,7 +165,7 @@ var config = {
                 zoom: 14
             },
             
-            showData: 'non_jmu_locations'    // Show only UNC locations
+            showData: 'non_jmu_locations'    // Show only UVA locations
         },
         
         {
@@ -188,7 +188,7 @@ var config = {
                 longitude: 34.4667,
                 postCount: 16,
                 robertaScore: 0.544,
-                isJMU: false                 // UNC location
+                isJMU: false                 // UVA location
             },
             
             showData: 'individual'
