@@ -25,7 +25,7 @@ var config = {
     // COLOR SCALE SETTINGS (Choose one - Plotly inspired)
     // =============================================================================
     
-    colorScale: 'RdYlGn',  // Options: 'RdYlGn' (Red-Yellow-Green) or 'Portland' (Blue-White-Red)
+    colorScale: 'Portland',  // Options: 'RdYlGn' (Red-Yellow-Green) or 'Portland' (Blue-White-Red)
     
     // =============================================================================
     // STORY CHAPTERS
@@ -129,7 +129,7 @@ var config = {
             // CHAPTER 5: JMU Location 3
             id: 'jmu-location-3',
             title: 'JMU Location 3: The Quad',
-            description: 'Add your description here.',
+            description: 'The rectangular lawn with academic buildings and dorms on its perimeter, serves as the central hub for students in the heart of Main Campus. With an average sentiment score of 27.26, and post count of 15, conversations about The Quad revolve around the scenery of the space and on-campus housing in the area.',
             image: './images/jmu_quad.jpg',
             duration: 2000,
             
