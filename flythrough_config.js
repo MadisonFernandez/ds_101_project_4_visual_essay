@@ -38,7 +38,7 @@ var config = {
         {
             // CHAPTER 1: Overview of both locations
             id: 'intro',
-            title: 'Reddit Sentiment Analysis: JMU vs. UVA',
+            title: 'Reddit Sentiment Analysis: UVA & JMU',
             description: 'Exploring how students discuss their campuses on Reddit - comparing JMU in Harrisonburg, VA and UVA in Charlottesville, VA.',
             image: './images/quad.jpg',
             duration: 3000,
@@ -81,16 +81,16 @@ var config = {
             
             // Camera position
             camera: {
-                latitude: 38.4376,           // Replace with coordinates from CSV
-                longitude: -78.8772,
+                latitude: 38.4374,           // Replace with coordinates from CSV
+                longitude: -78.8721,
                 zoom: 17
             },
             
             // Location data (creates the marker on map)
             location: {
                 name: 'JMU Location 1',      // Replace with location name from CSV
-                latitude: 38.4376,           // Must match camera coordinates
-                longitude: -78.8772,
+                latitude: 38.4374,           // Must match camera coordinates
+                longitude: -78.8721,
                 postCount: 41,               // Look up in your whitepaper visualizations
                 robertaScore: 17.488,          // Look up in your whitepaper visualizations
                 isJMU: true
