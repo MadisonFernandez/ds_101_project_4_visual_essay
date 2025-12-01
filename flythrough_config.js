@@ -249,7 +249,7 @@ var config = {
             // CHAPTER 10: Final zoom out
             id: 'conclusion',
             title: 'Conclusion: Comparing Campus Sentiment',
-            description: 'Our analysis reveals both similarities and differences in how students experience and discuss these two universities.',
+            description: 'Our analysis reveals both similarities and differences in how students experience and discuss these two universities. UVA appears more globally engaged, but its focus is actually narrow, while JMU remains deeply local. This shows two very different campus cultures of online engagement.',
             image: './images/uva_last.jpg',
             duration: 3000,
             
