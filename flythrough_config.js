@@ -198,7 +198,7 @@ var config = {
             // CHAPTER 8: UVA Location 2
             id: 'uva-location-2',
             title: 'UVA Location 2: Palestine',
-            description: 'Add your description here.',
+            description: 'The country is frequently discussed by UVA students in relation to the war between Israel and Palestine. With an average sentiment score of -.35 and post count of 23,  key themes discussed about Palestine include war and freeing Palestine.',
             image: './images/uva_palestine.jpg',
             duration: 5000,
             
@@ -224,7 +224,7 @@ var config = {
             // CHAPTER 9: UVA Location 3
             id: 'uva-location-3',
             title: 'UVA Location 3: Israel',
-            description: 'Add your description here.',
+            description: '',
             image: './images/uva_israel.jpg',
             duration: 3000,
             
