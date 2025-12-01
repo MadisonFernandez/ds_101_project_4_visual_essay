@@ -40,7 +40,7 @@ var config = {
             id: 'intro',
             title: 'Reddit Sentiment Analysis: UVA & JMU',
             description: 'Exploring how students discuss their campuses on Reddit - comparing JMU in Harrisonburg, VA and UVA in Charlottesville, VA.',
-            image: './images/quad.jpg',
+            image: './images/jmu_first.jpg',
             duration: 3000,
             
             // Camera position (where to fly)
@@ -250,7 +250,7 @@ var config = {
             id: 'conclusion',
             title: 'Conclusion: Comparing Campus Sentiment',
             description: 'Our analysis reveals both similarities and differences in how students experience and discuss these two universities.',
-            image: './images/quad.jpg',
+            image: './images/uva_last.jpg',
             duration: 3000,
             
             camera: {
