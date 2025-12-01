@@ -92,7 +92,7 @@ var config = {
                 latitude: 38.4374,           // Must match camera coordinates
                 longitude: -78.8721,
                 postCount: 41,               // Look up in your whitepaper visualizations
-                robertaScore: -0.286,          // Look up in your whitepaper visualizations
+                robertaScore: 17.488,          // Look up in your whitepaper visualizations
                 isJMU: true
             },
             
@@ -118,7 +118,7 @@ var config = {
                 latitude: 38.4362,
                 longitude:  -78.8691,
                 postCount: 16,
-                robertaScore: -0.428,
+                robertaScore: 0.260,
                 isJMU: true
             },
             
@@ -144,7 +144,7 @@ var config = {
                 latitude: 38.4385,
                 longitude: -78.8738,
                 postCount: 15,
-                robertaScore: 0.270,
+                robertaScore: 0.080,
                 isJMU: true
             },
             
