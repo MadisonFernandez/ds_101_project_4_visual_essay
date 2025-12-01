@@ -91,8 +91,8 @@ var config = {
                 name: 'JMU Location 1',      // Replace with location name from CSV
                 latitude: 38.4376,           // Must match camera coordinates
                 longitude: -78.8772,
-                postCount: 50,               // Look up in your whitepaper visualizations
-                robertaScore: 0.25,          // Look up in your whitepaper visualizations
+                postCount: 41,               // Look up in your whitepaper visualizations
+                robertaScore: 17.488,          // Look up in your whitepaper visualizations
                 isJMU: true
             },
             
@@ -117,8 +117,8 @@ var config = {
                 name: 'JMU Location 2',
                 latitude: 38.4362,
                 longitude:  -78.8691,
-                postCount: 75,
-                robertaScore: -0.15,
+                postCount: 16,
+                robertaScore: 0.080,
                 isJMU: true
             },
             
@@ -143,8 +143,8 @@ var config = {
                 name: 'JMU Location 3',
                 latitude: 38.4385,
                 longitude: -78.8738,
-                postCount: 100,
-                robertaScore: 0.55,
+                postCount: 15,
+                robertaScore: 0.260,
                 isJMU: true
             },
             
@@ -169,9 +169,9 @@ var config = {
         },
         
         {
-            // CHAPTER 7: UNC Location 1
-            id: 'unc-location-1',
-            title: 'UNC Location 1: Gaza',
+            // CHAPTER 7: UVA Location 1
+            id: 'uva-location-1',
+            title: 'UVA Location 1: Gaza',
             description: 'Add your description here.',
             image: './images/uva_gaza.jpg',
             duration: 5000,
@@ -183,11 +183,11 @@ var config = {
             },
             
             location: {
-                name: 'UNC Location 1',
+                name: 'UVA Location 1',
                 latitude: 31.5106,
                 longitude: 34.4667,
-                postCount: 60,
-                robertaScore: 0.30,
+                postCount: 16,
+                robertaScore: 0.544,
                 isJMU: false                 // UNC location
             },
             
@@ -195,9 +195,9 @@ var config = {
         },
         
         {
-            // CHAPTER 8: UNC Location 2
-            id: 'unc-location-2',
-            title: 'UNC Location 2: Palestine',
+            // CHAPTER 8: UVA Location 2
+            id: 'uva-location-2',
+            title: 'UVA Location 2: Palestine',
             description: 'Add your description here.',
             image: './images/uva_palestine.jpg',
             duration: 5000,
@@ -209,11 +209,11 @@ var config = {
             },
             
             location: {
-                name: 'UNC Location 2',
+                name: 'UVA Location 2',
                 latitude: 31.9216,
                 longitude: 35.2033,
-                postCount: 85,
-                robertaScore: -0.10,
+                postCount: 23,
+                robertaScore: 0.351,
                 isJMU: false
             },
             
@@ -221,9 +221,9 @@ var config = {
         },
         
         {
-            // CHAPTER 9: UNC Location 3
-            id: 'unc-location-3',
-            title: 'UNC Location 3: Israel',
+            // CHAPTER 9: UVA Location 3
+            id: 'uva-location-3',
+            title: 'UVA Location 3: Israel',
             description: 'Add your description here.',
             image: './images/uva_israel.jpg',
             duration: 3000,
@@ -235,11 +235,11 @@ var config = {
             },
             
             location: {
-                name: 'UNC Location 3',
+                name: 'UVA Location 3',
                 latitude: 30.8336,
                 longitude: 34.8572,
-                postCount: 95,
-                robertaScore: 0.40,
+                postCount: 62,
+                robertaScore: 0.484,
                 isJMU: false
             },
             
