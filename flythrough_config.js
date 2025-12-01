@@ -103,7 +103,7 @@ var config = {
             // CHAPTER 4: JMU Location 2
             id: 'jmu-location-2',
             title: 'JMU Location 2: The Village',
-            description: 'Add your description here.',
+            description: 'A popular dormitory area amongst freshmen, The Village dorms are a cluster of nine buildings on Main Campus. With an average sentiment score or 15.06 and post count of 16, conversations about The Village include renovations to the area, lack of air conditioning in the dorms, and the stereotypes of social students who live there. ',
             image: './images/jmu_village.jpg',
             duration: 2000,
             
