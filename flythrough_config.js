@@ -57,7 +57,7 @@ var config = {
             // CHAPTER 2: JMU Campus Overview
             id: 'jmu-campus',
             title: 'JMU Campus Overview',
-            description: 'James Madison University in Harrisonburg, Virginia. Three key locations emerge from student discussions.',
+            description: 'James Madison University in Harrisonburg, Virginia. Three key locations emerge from student discussions: The Quad, D-Hall, and The Village.',
             image: './images/jmu_overview.jpg',
             duration: 2500,
             
