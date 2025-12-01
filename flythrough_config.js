@@ -172,7 +172,7 @@ var config = {
             // CHAPTER 7: UVA Location 1
             id: 'uva-location-1',
             title: 'UVA Location 1: Gaza',
-            description: 'Add your description here.',
+            description: 'The site of a mass genocide and war between Isreal and Palestine. With an average sentiment score of -.54 and post count of 16, key themes amongst UVA students include protesting, sending aid, and death.',
             image: './images/uva_gaza.jpg',
             duration: 5000,
             
