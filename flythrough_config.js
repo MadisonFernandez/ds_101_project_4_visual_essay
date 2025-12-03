@@ -118,7 +118,7 @@ var config = {
                 latitude: 38.4362,
                 longitude:  -78.8691,
                 postCount: 16,
-                robertaScore: -0.428,
+                robertaScore: 0.08,
                 isJMU: true
             },
             
